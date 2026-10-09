@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Maintenance</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      overflow:hidden;
+      height:100vh;
+      background:linear-gradient(135deg,#0f172a,#111827,#1e293b);
+      color:white;
+      position:relative;
+    }
+
+    .court{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 60%);
+    }
+
+    /* Tennis Court Lines */
+    .court::before{
+      content:'';
+      position:absolute;
+      width:80%;
+      height:70%;
+      border:4px solid rgba(255,255,255,0.1);
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      border-radius:10px;
+    }
+
+    .center-line{
+      position:absolute;
+      width:4px;
+      height:70%;
+      background:rgba(255,255,255,0.08);
+      left:50%;
+      top:15%;
+    }
+
+    /* Floating Ball */
+    .ball{
+      position:absolute;
+      width:70px;
+      height:70px;
+      background:#d9ff3f;
+      border-radius:50%;
+      left:15%;
+      top:60%;
+      box-shadow:
+      inset -8px -8px 0 rgba(0,0,0,0.1),
+      0 0 30px rgba(217,255,63,0.5);
+
+      animation:
+      moveBall 5s infinite ease-in-out,
+      rotateBall 2s linear infinite;
+    }
+
+    .ball::before,
+    .ball::after{
+      content:'';
+      position:absolute;
+      border:3px solid white;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      top:7px;
+    }
+
+    .ball::before{
+      left:-20px;
+    }
+
+    .ball::after{
+      right:-20px;
+    }
+
+    @keyframes moveBall{
+
+      0%{
+        left:15%;
+        top:60%;
+        transform:scale(1);
+      }
+
+      25%{
+        left:40%;
+        top:20%;
+        transform:scale(0.9);
+      }
+
+      50%{
+        left:70%;
+        top:55%;
+        transform:scale(1);
+      }
+
+      75%{
+        left:45%;
+        top:75%;
+        transform:scale(0.95);
+      }
+
+      100%{
+        left:15%;
+        top:60%;
+        transform:scale(1);
+      }
+
+    }
+
+    @keyframes rotateBall{
+      from{
+        transform:rotate(0deg);
+      }
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    /* Cartoon Tennis Player */
+
+    .player{
+      position:absolute;
+      bottom:90px;
+      right:12%;
+      width:180px;
+      height:260px;
+      animation:swing 2s infinite ease-in-out;
+    }
+
+    @keyframes swing{
+      0%,100%{
+        transform:rotate(0deg);
+      }
+      50%{
+        transform:rotate(-8deg);
+      }
+    }
+
+    .head{
+      width:65px;
+      height:65px;
+      background:#ffd6a5;
+      border-radius:50%;
+      margin:auto;
+      position:relative;
+      z-index:5;
+    }
+
+    .eye{
+      width:6px;
+      height:6px;
+      background:#000;
+      border-radius:50%;
+      position:absolute;
+      top:25px;
+    }
+
+    .eye.left{
+      left:18px;
+    }
+
+    .eye.right{
+      right:18px;
+    }
+
+    .smile{
+      width:18px;
+      height:8px;
+      border-bottom:3px solid #000;
+      border-radius:0 0 20px 20px;
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:15px;
+    }
+
+    .body{
+      width:80px;
+      height:110px;
+      background:#22c55e;
+      margin:auto;
+      margin-top:-5px;
+      border-radius:20px;
+      position:relative;
+    }
+
+    .arm{
+      width:70px;
+      height:16px;
+      background:#ffd6a5;
+      position:absolute;
+      top:30px;
+      border-radius:20px;
+      transform-origin:left center;
+    }
+
+    .arm.left{
+      left:-50px;
+      transform:rotate(30deg);
+    }
+
+    .arm.right{
+      right:-55px;
+      transform:rotate(-35deg);
+      animation:hit 2s infinite ease-in-out;
+    }
+
+    @keyframes hit{
+      0%,100%{
+        transform:rotate(-35deg);
+      }
+
+      50%{
+        transform:rotate(-95deg);
+      }
+    }
+
+    .leg{
+      width:18px;
+      height:90px;
+      background:#ffd6a5;
+      position:absolute;
+      bottom:-80px;
+      border-radius:20px;
+    }
+
+    .leg.left{
+      left:18px;
+    }
+
+    .leg.right{
+      right:18px;
+    }
+
+    /* Racket */
+
+    .racket{
+      position:absolute;
+      width:80px;
+      height:80px;
+      border:5px solid #e5e7eb;
+      border-radius:50%;
+      right:-120px;
+      top:-20px;
+    }
+
+    .racket::before{
+      content:'';
+      position:absolute;
+      width:10px;
+      height:70px;
+      background:#9ca3af;
+      bottom:-65px;
+      left:50%;
+      transform:translateX(-50%) rotate(20deg);
+      border-radius:10px;
+    }
+
+    /* Content */
+
+    .content{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      text-align:center;
+      width:90%;
+      max-width:800px;
+      z-index:20;
+    }
+
+    .badge{
+      display:inline-block;
+      background:#22c55e;
+      padding:10px 22px;
+      border-radius:50px;
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:1px;
+      margin-bottom:25px;
+      box-shadow:0 0 20px rgba(34,197,94,0.5);
+    }
+
+    h1{
+      font-size:65px;
+      font-weight:700;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    h1 span{
+      color:#4ade80;
+    }
+
+    p{
+      font-size:19px;
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:35px;
+    }
+
+    .loader{
+      width:320px;
+      height:14px;
+      background:rgba(255,255,255,0.08);
+      margin:auto;
+      border-radius:20px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .loader-bar{
+      width:40%;
+      height:100%;
+      background:#4ade80;
+      border-radius:20px;
+      animation:loading 3s infinite;
+    }
+
+    @keyframes loading{
+
+      0%{
+        margin-left:-40%;
+      }
+
+      100%{
+        margin-left:100%;
+      }
+
+    }
+
+    .status{
+      margin-top:18px;
+      font-size:15px;
+      color:#94a3b8;
+    }
+
+    .footer{
+      position:absolute;
+      bottom:20px;
+      width:100%;
+      text-align:center;
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    /* Floating Text */
+
+    .floating{
+      position:absolute;
+      font-weight:600;
+      opacity:0.1;
+      animation:floatText 12s linear infinite;
+      white-space:nowrap;
+    }
+
+    @keyframes floatText{
+
+      from{
+        transform:translateY(100vh);
+      }
+
+      to{
+        transform:translateY(-120vh);
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      h1{
+        font-size:42px;
+      }
+
+      p{
+        font-size:16px;
+      }
+
+      .loader{
+        width:100%;
+      }
+
+      .player{
+        transform:scale(0.8);
+        right:-20px;
+      }
+
+      .ball{
+        width:50px;
+        height:50px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="court"></div>
+  <div class="center-line"></div>
+
+  <!-- Floating Maintenance Text -->
+
+  <div class="floating" style="left:10%; font-size:40px; animation-duration:15s;">
+    MAINTENANCE
+  </div>
+
+  <div class="floating" style="left:75%; font-size:30px; animation-duration:12s;">
+    UPDATE SERVER
+  </div>
+
+  <div class="floating" style="left:45%; font-size:25px; animation-duration:18s;">
+    LOADING...
+  </div>
+
+  <!-- Ball -->
+
+  <div class="ball"></div>
+
+  <!-- Cartoon Tennis Player -->
+
+  <div class="player">
+
+    <div class="head">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="smile"></div>
+    </div>
+
+    <div class="body">
+
+      <div class="arm left"></div>
+
+      <div class="arm right">
+        <div class="racket"></div>
+      </div>
+
+      <div class="leg left"></div>
+      <div class="leg right"></div>
+
+    </div>
+
+  </div>
+
+  <!-- Content -->
+
+  <div class="content">
+
+    <div class="badge">
+      🎾 WEBSITE UNDER MAINTENANCE
+    </div>
+
+    <h1>
+      Sedang <span>Servis Lapangan</span>
+    </h1>
+
+    <p>
+      Website sedang melakukan pemanasan sebelum kembali bertanding.
+      Kami sedang meningkatkan performa server agar pengalaman Anda lebih cepat, stabil, dan maksimal.
+    </p>
+
+    <div class="loader">
+      <div class="loader-bar"></div>
+    </div>
+
+    <div class="status" id="statusText">
+      Menyiapkan pertandingan server...
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2026 Your Website — All Rights Reserved
+  </div>
+
+  <script>
+
+    const statusList = [
+
+      "Menyiapkan pertandingan server...",
+      "Memukul bug keluar lapangan...",
+      "Melakukan upgrade performa...",
+      "Menata strategi kemenangan...",
+      "Server sedang warming up..."
+
+    ];
+
+    let i = 0;
+
+    setInterval(() => {
+
+      i++;
+
+      if(i >= statusList.length){
+        i = 0;
+      }
+
+      document.getElementById("statusText").innerHTML = statusList[i];
+
+    },3000);
+
+  </script>
+
+</body>
+</html>
