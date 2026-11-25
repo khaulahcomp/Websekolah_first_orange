@@ -8,7 +8,7 @@
 
 	<div class="site-breadcrumb" style="background-image: url(<?= base_url('assets/upload/images/breadcumb/').$general['breadcumb']?>)">
 		<div class="container">
-			<h2 class="breadcrumb-title"><?= htmlspecialchars($album->judul, ENT_QUOTES, 'UTF-8') ?></h2>
+			<h2 class="breadcrumb-title notranslate" translate="no"><?= htmlspecialchars($album->judul, ENT_QUOTES, 'UTF-8') ?></h2>
 			<ul class="breadcrumb-menu">
 				<li><a href="<?= base_url('') ?>">Home</a></li>
 				<li><a href="<?= base_url('dashboard/foto') ?>">Galeri Foto</a></li>
@@ -26,7 +26,7 @@
 				<div class="col-lg-8 mx-auto">
 					<div class="site-heading text-center">
 						<span class="site-title-tagline"><i class="far fa-images"></i> <?= count($photos) ?> Foto &middot; <?= date('d M Y', strtotime($album->waktu)) ?></span>
-						<h2 class="site-title"><?= htmlspecialchars($album->judul, ENT_QUOTES, 'UTF-8') ?></h2>
+						<h2 class="site-title notranslate" translate="no"><?= htmlspecialchars($album->judul, ENT_QUOTES, 'UTF-8') ?></h2>
 					</div>
 				</div>
 			</div>
