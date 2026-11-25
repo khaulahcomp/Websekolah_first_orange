@@ -152,7 +152,16 @@ class Usermanajemen extends CI_Controller {
     public function hapus()
 	{
 		    $id = $this->input->post('id');
-           
+
+                    // Hard delete: hapus juga file foto profil user dari server
+                    $user = $this->db->get_where('admin', array('id' => $id))->row();
+                    if ($user && !empty($user->photo_profile)) {
+                        $foto = FCPATH . 'uploads/fotoprofile/' . basename((string) $user->photo_profile);
+                        if (is_file($foto)) {
+                            @unlink($foto);
+                        }
+                    }
+
                     $data = $this->db->query("DELETE FROM admin WHERE id= '".$this->db->escape_str($id)."' ");
                     if ($data) {
                         echo 'success';

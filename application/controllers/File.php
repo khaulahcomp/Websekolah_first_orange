@@ -118,7 +118,7 @@ class File extends CI_Controller
 		$file = $this->db->query("select * from file where id ='".$this->db->escape_str($id)."' ")->row();
 
 		if ($file) {
-			$img = $file->filw;
+			$img = basename((string) $file->file);
 			$image = $this->path . $img;
 
 			if ($img) {
