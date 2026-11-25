@@ -40,7 +40,7 @@
 						<span class="album-count"><i class="far fa-images"></i> <?= (int) $a->jumlah ?> Foto</span>
 					</div>
 					<div class="album-info">
-						<h3 class="album-title"><?= htmlspecialchars($a->judul, ENT_QUOTES, 'UTF-8') ?></h3>
+						<h3 class="album-title notranslate" translate="no"><?= htmlspecialchars($a->judul, ENT_QUOTES, 'UTF-8') ?></h3>
 						<div class="album-meta"><?= date('d M Y', strtotime($a->waktu)) ?></div>
 					</div>
 				</a>

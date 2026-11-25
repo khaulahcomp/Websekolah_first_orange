@@ -6,7 +6,7 @@ class Akun extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->library('form_validation');
         $this->load->helper('date');
-		$this->fotoprofile = FCPATH . "uploads/fotoprofile";
+		$this->fotoprofile = FCPATH . "uploads/fotoprofile/";
 
         $this->load->library('admin_guard');
 		$this->admin_guard->require_admin();
